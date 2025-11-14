@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root{
+  --bg:#0b0b10;
+  --panel:#d7d7d7;
+  --panel-dark:#b5b5b5;
+  --accent:#6a6aeb;
+  --btnA:#d80000;
+  --btnB:#f1c232;
+  --card-back:#2b2f45;
+  --card-front:#ffffff;
+  --text:#111;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Press Start 2P',sans-serif;
+  background:linear-gradient(180deg,#08080b,#1a1a2b);
+  color:var(--panel);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+}
+
+.screen{width:960px;max-width:95%;height:640px;background:linear-gradient(180deg,var(--panel),var(--panel-dark));border-radius:12px;box-shadow:0 10px 0 rgba(0,0,0,.6);display:none;flex-direction:column;align-items:center;justify-content:center;position:relative;padding:20px}
+.screen.active{display:flex}
+.panel{text-align:center;padding:20px;width:80%;border:6px solid #222;border-radius:8px;background:linear-gradient(180deg,#f3f3f3,#d7d7d7)}
+.panel h1{color:#222;margin-bottom:24px;font-size:28px;letter-spacing:2px}
+.start-buttons{display:flex;flex-direction:column;gap:12px;align-items:center}
+.start-buttons button{min-width:260px;padding:14px;border-radius:8px;border:4px solid #222;background:linear-gradient(180deg,#4f88ff,#2b5dc7);color:#fff;font-size:12px;cursor:pointer;box-shadow:0 8px 0 #0c2a6a;transition:transform .12s}
+.start-buttons button:active{transform:translateY(4px);box-shadow:0 4px 0 #0c2a6a}
+
+.overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);z-index:40}
+.overlay.active{display:flex}
+
+.popup{width:720px;max-width:90%;background:#16202b;border:6px solid #222;padding:22px;border-radius:10px;color:#ffd700;text-align:center;box-shadow:0 14px 0 rgba(0,0,0,.6)}
+.popup h2{color:#ffd700;margin-bottom:10px}
+.popup p{color:#fff;margin-bottom:18px;line-height:1.4;font-size:12px}
+.popup button{padding:10px 20px;border-radius:8px;border:4px solid #222;background:#ffd700;color:#000;cursor:pointer;font-size:12px}
+
+.game-header{width:100%;display:flex;justify-content:space-between;align-items:center;padding:8px 16px;border-bottom:6px solid #222}
+.title{font-size:14px;color:#222}
+.hud{display:flex;gap:14px;align-items:center}
+.hud .turn{background:#fff;padding:8px 12px;border-radius:6px;color:#111;border:4px solid #222}
+.hud .scores{display:flex;gap:12px;color:#fff;font-size:12px}
+
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%}
+
+.board{width:880px;max-width:95%;display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:16px;justify-items:center;align-items:center}
+.card{width:120px;height:120px;border-radius:8px;perspective:1000px;cursor:pointer;position:relative}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s}
+.card.flipped .card-inner{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.card-back{background: linear-gradient(180deg,#2b2f45,#1f2436);border:6px solid #111;box-shadow:0 8px 0 rgba(0,0,0,.4);color:#fff;font-size:12px}
+.card-front{transform:rotateY(180deg);background:var(--card-front);border:6px solid #111;display:flex;align-items:center;justify-content:center}
+.card-front img{width:100%;height:100%;object-fit:cover;border-radius:4px}
+
+.controls{margin-top:18px;display:flex;gap:14px;align-items:center;justify-content:center}
+.controls button{padding:10px 18px;border-radius:8px;border:4px solid #111;background:linear-gradient(180deg,#4f88ff,#2b5dc7);color:#fff;cursor:pointer;box-shadow:0 8px 0 #0c2a6a}
+.controls button.exit{background:linear-gradient(180deg,#ff4b4b,#b22020);box-shadow:0 8px 0 #7a1010}
+.controls button.restart{background:linear-gradient(180deg,#ffd84a,#e6b800);color:#000;box-shadow:0 8px 0 #b8860b}
+
+.matched .card-inner{transform:rotateY(180deg)}
+.matched .card-front{opacity:1;filter:grayscale(0)}
+.disabled{pointer-events:none;opacity:.9;transform:translateY(4px)}
+
+.end-buttons{display:flex;gap:12px;justify-content:center}
+.end-buttons button{padding:10px 18px;border-radius:8px;border:4px solid #111;background:linear-gradient(180deg,#4f88ff,#2b5dc7);color:#fff;cursor:pointer;box-shadow:0 8px 0 #0c2a6a}
+.end-buttons button.exit{background:linear-gradient(180deg,#ff4b4b,#b22020)}
+.end-buttons button.restart{background:linear-gradient(180deg,#ffd84a,#e6b800);color:#000}

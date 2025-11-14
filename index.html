@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jogo da Memória - SNES</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="start-screen" class="screen active">
+    <div class="panel">
+      <h1>PRESS START</h1>
+      <div class="start-buttons">
+        <button id="btnStart">INICIAR JOGO</button>
+        <button id="btnHow">COMO JOGAR</button>
+        <button id="btnPlacar">PLACAR</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="how-screen" class="overlay">
+    <div class="popup">
+      <h2>COMO JOGAR</h2>
+      <p>Dois jogadores alternam turnos. Cada turno consiste em virar duas cartas. Se formar par, ganha ponto. Depois de duas cartas viradas, a vez passa ao outro jogador. O jogo termina quando todos os pares são encontrados.</p>
+      <button id="btnCloseHow">FECHAR</button>
+    </div>
+  </div>
+
+  <div id="score-screen" class="overlay">
+    <div class="popup">
+      <h2>PLACAR</h2>
+      <div class="scoreboard">
+        <div>Player 1: <span id="score1">0</span></div>
+        <div>Player 2: <span id="score2">0</span></div>
+        <div>Partidas: <span id="matchesPlayed">0</span></div>
+      </div>
+      <button id="btnCloseScore">FECHAR</button>
+    </div>
+  </div>
+
+  <div id="game-screen" class="screen">
+    <header class="game-header">
+      <div class="title">JOGO DA MEMÓRIA</div>
+      <div class="hud">
+        <div class="turn">Vez: <span id="turn">1</span></div>
+        <div class="scores">
+          <span>P1: <b id="p1">0</b></span>
+          <span>P2: <b id="p2">0</b></span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div id="board" class="board"></div>
+      <div id="controls" class="controls"></div>
+    </main>
+  </div>
+
+  <div id="end-popup" class="overlay">
+    <div class="popup">
+      <h2 id="end-title">FIM DE JOGO</h2>
+      <p id="end-text"></p>
+      <div class="end-buttons">
+        <button id="btnRestart">REINICIAR</button>
+        <button id="btnExit">SAIR</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
